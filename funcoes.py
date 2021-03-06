@@ -49,7 +49,7 @@ def nova_funcao():
     if variavel:
         return 4
     elif variavel is None:
-        reutrn 3.2
+        return 3.2
     return 'b'
 
 #exemplo3:
@@ -99,9 +99,9 @@ def outra(num1, b, msg):
 #nomeando parametros
 
 def nome_completo(nome, sobrenome):
-    return f'seunome completo é {nome} {sobrenome}
+    return f'seunome completo é {nome} {sobrenome}'
 
-print(nome_completo{'angelina', 'jolie'}) 
+print(nome_completo({'angelina', 'jolie'}))
 
 #parametros sao variaveis declaradas na definicaçca o da funcao
 #argumentos sao dados passados durante a execução
@@ -117,3 +117,73 @@ def soma_impar(numeros):
 lista = [ 1,2,3,4,5,6,7]
 
 print(soma_impar(lista))
+
+#funcoes com parametro padroes (também conhecido ocmo parametro opcional)
+
+def exponencial (numero, potencia):
+    return numero ** potencia
+def exponencialpadrao (numero, potencia=2): #por parametro, o exponecnial é 2, então sempre será ao quadrado.
+    return numero ** potencia
+
+print(exponencial(2,3)) # 2 * 2 * 2
+
+print(exponencialpadrao(3)) #por padrão, eleve ao quadrado
+print(exponencial(3,5)) #eleva a potencia informada pelo usuario
+#caso no def exponencial seja passado 2 parametros o primeiro vai para o numero e o segundo irá para potência.
+
+#em funcoes python ,os parametros com valores default devem sempre estar ao ifnal da declaração
+#exemplo acima, onde o potencia é que recebe 2. se fosse o numero, deveria este ser colocado ao final.
+
+#exemplo mais completo
+
+def monstra_informacao(nome='fred', instrutor=False):
+    if nome == 'fred' and instrutor:
+        return 'bem vindo maluco'
+    elif nome == 'fred':
+        return 'erro mlk'
+    return f'olá {nome}'
+
+print(monstra_informacao())
+print(monstra_informacao(instrutor=True))
+print(monstra_informacao('ozzy'))
+
+#pq usar parametros default?
+
+#mais flexivel com funcao, evita erros com parametros incorretos, nos permite trabalhar com código mais legitvel
+#qual tipo de dados podemos utilizar como default? TODOS, inclusive funções!
+
+"""
+escopo
+
+variaveis globais
+variaveis locais
+
+instrutor = 'geek' # variavel global
+
+def pepe():
+    instrutor = 'python' #variavel local"
+    return f'oi {instrutor}
+    
+se tivermos uama variavel local com o mesom nome de uma global, a variaveil local terá preferencia 
+"""
+
+#variveis globais
+
+total = 0
+
+def incremente():
+    global total #declaração de como utilizar uma variavel global dentro do método
+    total = total + 1
+    return total
+
+
+#podemkos ter funcoes declaradas dentro de outras funcoes
+
+def fora():
+    contador = 0
+
+    def dentro():
+        nonlocal contador
+        contador = contador + 1
+        return contador
+    return dentro()
