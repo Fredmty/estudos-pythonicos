@@ -10,7 +10,7 @@ obs: sobre dicionários:
  -- tanto chave e valor podem ser de qualquer tipo de dado
 -- podemos misturar tipos de dados
 """
-
+http://172.17.0.1/api/boleto/generate
 #forma mais comum de criação de dicionários 
 
 paises = { "br:" : "brasil", "eau": "estados unidos"}
